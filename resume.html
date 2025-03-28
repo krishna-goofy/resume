@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Krishna Malhotra Resume</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons (Alternate CDN) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-pap0ja6YqYP3iDb28XKygXcY8+H1Cz97O+9GDG1G/1e1RjKRlQEbcrOCc7je8ScnU8+WcWhuh/5YkL04bzk8VQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: #f4f7f9;
+        color: #333;
+      }
+      /* Desktop Sidebar */
+      .sidebar {
+        height: 100vh;
+        background: none;
+        color: #333;
+        position: fixed;
+        width: 250px;
+        top: 0;
+        left: 0;
+        padding: 20px;
+        overflow-y: auto;
+        transition: transform 0.3s ease-in-out;
+      }
+      .sidebar h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .sidebar .nav-link {
+        color: #333;
+        font-size: 1rem;
+        padding: 0.5rem 0;
+        cursor: pointer;
+      }
+      .sidebar .nav-link:hover {
+        text-decoration: underline;
+      }
+      /* Main Content */
+      .content {
+        margin-left: 270px;
+        padding: 20px;
+        transition: margin-left 0.3s ease-in-out;
+      }
+      .content.full-width {
+        margin-left: 20px;
+      }
+      /* Header Styles */
+      .header {
+        background: linear-gradient(135deg, #007bff, #00d4ff);
+        color: #fff;
+        padding: 60px 20px;
+        text-align: center;
+        position: relative;
+      }
+      .header h1 {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+      .header p {
+        font-size: 1.1rem;
+      }
+      .update-date {
+        font-size: 0.9rem;
+        margin-top: 10px;
+      }
+      /* Mobile Hamburger Button */
+      .hamburger-btn {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 1100;
+        border: none;
+        background: transparent;
+        color: #fff;
+        font-size: 1.8rem;
+        display: none;
+      }
+      /* Section Titles with clickable links */
+      .section-title {
+        border-bottom: 3px solid #007bff;
+        display: inline-block;
+        padding-bottom: 5px;
+        margin-bottom: 30px;
+        font-weight: 500;
+      }
+      .section-title a {
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .section-title a:hover {
+        text-decoration: underline;
+      }
+      .content-section {
+        background: #fff;
+        border-radius: 8px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+      }
+      .table thead {
+        background-color: #007bff;
+        color: #fff;
+      }
+      .list-unstyled li::before {
+        content: "\2022";
+        color: #007bff;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+      }
+      .footer {
+        text-align: center;
+        padding: 20px 0;
+        color: #777;
+      }
+      /* Modal Custom Styles */
+      .modal-content {
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      .modal-header {
+        background: #007bff;
+        color: #fff;
+      }
+      .modal-header .btn-close {
+        filter: invert(1);
+      }
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        /* Hide desktop sidebar */
+        .sidebar {
+          display: none;
+        }
+        .content {
+          margin-left: 0;
+        }
+        .hamburger-btn {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Offcanvas Sidebar for Mobile -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="mobileSidebar"
+      aria-labelledby="mobileSidebarLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="mobileSidebarLabel">Navigation</h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <span class="nav-link" onclick="scrollToSection('krishna-malhotra')">Home</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link" onclick="scrollToSection('summary')">Summary</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link" onclick="scrollToSection('education')">Education</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link" onclick="scrollToSection('internships')">Internships</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link" onclick="scrollToSection('certifications')">Certifications</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link" onclick="scrollToSection('projects')">Projects</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link" onclick="scrollToSection('skills')">Skills</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link" onclick="scrollToSection('experience')">Experience</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Desktop Sidebar -->
+    <nav class="sidebar" id="sidebar">
+      <h2>Navigation</h2>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <span class="nav-link" onclick="scrollToSection('krishna-malhotra')">Home</span>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" onclick="scrollToSection('summary')">Summary</span>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" onclick="scrollToSection('education')">Education</span>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" onclick="scrollToSection('internships')">Internships</span>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" onclick="scrollToSection('certifications')">Certifications</span>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" onclick="scrollToSection('projects')">Projects</span>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" onclick="scrollToSection('skills')">Skills</span>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" onclick="scrollToSection('experience')">Experience</span>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content" id="content">
+      <!-- Header -->
+      <header class="header" id="krishna-malhotra">
+        <!-- Hamburger Button for Mobile -->
+        <button
+          class="hamburger-btn"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileSidebar"
+          aria-controls="mobileSidebar"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="container">
+          <h1>Krishna Malhotra</h1>
+          <p>
+            Maharaja Surajmal Institute, IP University • BCA, 3rd Year • New Delhi,
+            India <br />
+            <a href="mailto:km232820@gmail.com" class="text-white">km232820@gmail.com</a>
+            • +91 8851172073
+          </p>
+          <p class="update-date">Last Updated: March 2025</p>
+        </div>
+      </header>
+
+      <!-- Main Sections -->
+      <main class="container my-5">
+        <!-- Summary Section -->
+        <section id="summary" class="content-section">
+          <h2 class="section-title">
+            <a data-bs-toggle="modal" data-bs-target="#modalSummary">Summary</a>
+          </h2>
+          <p>
+            Dedicated BCA student with a robust foundation in web development, data visualization, and AI integration. Proven experience in designing user-centric applications, managing full-stack projects, and implementing innovative technological solutions.
+          </p>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="content-section">
+          <h2 class="section-title">
+            <a data-bs-toggle="modal" data-bs-target="#modalEducation">Education</a>
+          </h2>
+          <div class="mb-3">
+            <strong>Maharaja Surajmal Institute, Janakpuri, New Delhi</strong>
+            <br />
+            BCA (3rd Year)
+          </div>
+          <div>
+            <strong>Salwan Public School, Rajendra Nagar, New Delhi</strong>
+          </div>
+        </section>
+
+        <!-- Internships Section -->
+        <section id="internships" class="content-section">
+          <h2 class="section-title">
+            <a data-bs-toggle="modal" data-bs-target="#modalInternships">Internships</a>
+          </h2>
+          <div class="mb-3">
+            <h5>Web Development &amp; AI Intern</h5>
+            <p>Bretton Woods Finlease Limited | May 2024 – Jun 2024</p>
+          </div>
+          <div>
+            <h5>Data Visualization &amp; Front-End Development Intern</h5>
+            <p>Behtar Zindagi Pvt. Ltd. | Jul 2024 – Aug 2024</p>
+          </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="content-section">
+          <h2 class="section-title">
+            <a data-bs-toggle="modal" data-bs-target="#modalCertifications">Certifications</a>
+          </h2>
+          <ul class="list-unstyled">
+            <li>
+              <strong>Communifiesta: The Art of Communication</strong> | Nov 2023
+            </li>
+            <li>
+              <strong>Personalise: Unlocking Your Full Potential Workshop</strong> | Oct 2023
+            </li>
+            <li>
+              <strong>Editorial Board Member - Creation 2023</strong> | 2023
+            </li>
+            <li>
+              <strong>Smart India Hackathon (Internal)</strong> | Sep 2024
+            </li>
+            <li>
+              <strong>Youth4Future Hackathon (Organizer)</strong> | Aug 2024
+            </li>
+            <li>
+              <strong>Certificate of Participation - BuildwithIndia Finale at Google Office</strong>
+              <br />
+              Recognized among the top 5,000 teams out of 25,000 for outstanding performance and achievement.
+            </li>
+            <li>
+              <strong>Certificate of Appreciation - AVENSIS’ 25</strong>
+              <br />
+              Awarded for demonstrating indomitable will and passion as part of the Discipline Team at the Annual Technical Fest of MSIT - Avensis’25 (Jan 29th–30th, 2025).
+            </li>
+          </ul>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="content-section">
+          <h2 class="section-title">
+            <a data-bs-toggle="modal" data-bs-target="#modalProjects">Projects</a>
+          </h2>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Key Technologies</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Attendance Management System</strong></td>
+                  <td>ESP8266, Arduino, Flask</td>
+                  <td>
+                    IoT-based system integrating fingerprint authentication and real-time attendance tracking with a Flask server.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>AI-Powered College Chatbot</strong></td>
+                  <td>Google Gemini, Flask, BeautifulSoup</td>
+                  <td>
+                    Intelligent chatbot that leverages AI and web scraping to provide dynamic, contextual responses for college-related queries.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>College Study Material Portal</strong></td>
+                  <td>Flask, Flask-SQLAlchemy, Bootstrap</td>
+                  <td>
+                    Web portal for efficient management and dissemination of study materials with distinct admin and user interfaces.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Department of Justice Chatbot</strong></td>
+                  <td>Flask, Google Gemini, SQLite</td>
+                  <td>
+                    NLP-based chatbot designed to deliver real-time responses by integrating web scraping techniques with database management.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Home Automation System</strong></td>
+                  <td>Python, Tkinter, Voice Recognition</td>
+                  <td>
+                    Innovative smart home solution featuring a graphical interface for voice-controlled appliance management.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Social Media Application</strong></td>
+                  <td>
+                    Flask, Flask-Login, SQLAlchemy, MoviePy, Ngrok, HTML/CSS, JavaScript
+                  </td>
+                  <td>
+                    A full-fledged social media platform featuring secure user authentication, multimedia uploads, video processing, and search functionality based on an MVC architecture.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Threat Recognition &amp; Emergency Response</strong></td>
+                  <td>
+                    Flask, SQLAlchemy, Flask-Login, OpenCV, Keras, YOLO, Flask-Mail, Bootstrap, jQuery
+                  </td>
+                  <td>
+                    A real-time security system that monitors camera feeds using machine learning to detect violence and weapons, logs incidents, and automatically sends emergency alerts.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>AI Fashion Designing Application</strong></td>
+                  <td>
+                    Flask, Diffusers, Google Colab, Pyngrok, OpenCV, AJAX, Bootstrap
+                  </td>
+                  <td>
+                    AI-driven application that integrates an inpainting pipeline for artistic fashion design; combines a Colab backend with a modern web interface to process and transform images.
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><strong>Property Builder Projects Web App</strong></td>
+                  <td>Python Flask, SQLAlchemy, Bootstrap</td>
+                  <td>
+                    Full-stack web application for displaying Property builder projects with multimedia uploads, dynamic project pages, and robust database integration.
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="content-section">
+          <h2 class="section-title">
+            <a data-bs-toggle="modal" data-bs-target="#modalSkills">Skills</a>
+          </h2>
+          <p>
+            <strong>Programming &amp; Scripting:</strong> Python, JavaScript, SQL <br />
+            <strong>Frameworks &amp; Libraries:</strong> Flask, SQLAlchemy, HTML/CSS, Bootstrap, BeautifulSoup, Tesseract OCR <br />
+            <strong>AI &amp; NLP:</strong> Google Gemini API, Chatbot Development <br />
+            <strong>IoT &amp; Microcontrollers:</strong> ESP8266, Arduino, IR Communication <br />
+            <strong>Others:</strong> Web Scraping, Data Visualization
+          </p>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="content-section">
+          <h2 class="section-title">
+            <a data-bs-toggle="modal" data-bs-target="#modalExperience">Experience</a>
+          </h2>
+          <ul class="list-unstyled">
+            <li>
+              <strong>Organizer, Youth4Future Hackathon</strong> | Aug 2024
+            </li>
+            <li>
+              <strong>Organizer, “Personalise: Unlocking Your Full Potential” Workshop</strong> | Oct 2023
+            </li>
+            <li>
+              <strong>Participant, Smart India Hackathon (Internal Round)</strong> | Sep 2024
+            </li>
+            <li>
+              <strong>Editorial Board Member, Creation 2023 (Annual Magazine)</strong> | 2023
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="container">
+          <p>&copy; 2025 Krishna Malhotra. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Modals for Section Explanations -->
+    <!-- Summary Modal -->
+    <div class="modal fade" id="modalSummary" tabindex="-1" aria-labelledby="modalSummaryLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="modalSummaryLabel" class="modal-title">Summary Explained</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              The Summary section provides a comprehensive overview of Krishna Malhotra’s professional profile. It encapsulates my journey as a BCA student with a strong focus on web development, data visualization, and AI integration.
+            </p>
+            <p>
+              Krishna has been involved in numerous projects that highlight my technical skills and innovative mindset. My work ranges from full-stack application development to AI-powered solutions that improve user experiences and drive business results.
+            </p>
+            <p>
+              This section sets the tone for my resume by emphasizing my passion for technology, my commitment to continuous learning, and my track record of delivering high-quality, impactful solutions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education Modal -->
+    <div class="modal fade" id="modalEducation" tabindex="-1" aria-labelledby="modalEducationLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="modalEducationLabel" class="modal-title">Education Explained</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              The Education section outlines Krishna’s academic journey, highlighting my current pursuit of a BCA at Maharaja Surajmal Institute. My curriculum covers modern programming paradigms, database management, and emerging technologies.
+            </p>
+            <p>
+              Complementing my higher education is my foundational learning at Salwan Public School, which instilled strong analytical and problem-solving skills.
+            </p>
+            <p>
+              This academic background supports my practical expertise, creating a well-rounded profile that bridges theory and hands-on technical application.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Internships Modal -->
+    <div class="modal fade" id="modalInternships" tabindex="-1" aria-labelledby="modalInternshipsLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="modalInternshipsLabel" class="modal-title">Internships Explained</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              The Internships section showcases Krishna’s work experience in real-world tech environments. As a Web Development &amp; AI Intern, he contributed to the creation of dynamic web applications with integrated AI functionalities at Bretton Woods Finlease Limited.
+            </p>
+            <p>
+              My role as a Data Visualization &amp; Front-End Development Intern further honed my skills in designing intuitive user interfaces and presenting data in engaging, visually appealing formats.
+            </p>
+            <p>
+              These experiences have not only expanded my technical capabilities but also enriched my understanding of teamwork and project execution.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications Modal -->
+    <div class="modal fade" id="modalCertifications" tabindex="-1" aria-labelledby="modalCertificationsLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="modalCertificationsLabel" class="modal-title">Certifications Explained</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              This section enumerates Krishna’s certifications and awards, reflecting my dedication to professional growth and technical excellence. My accolades from Communifiesta, various hackathons, and specialized workshops demonstrate my commitment to continuous learning.
+            </p>
+            <p>
+              Each certification not only validates my skills but also highlights my ability to excel in competitive environments and contribute innovative solutions in the tech industry.
+            </p>
+            <p>
+              These accomplishments serve as a strong foundation for my professional profile, underscoring both my technical and leadership qualities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Modal -->
+    <div class="modal fade" id="modalProjects" tabindex="-1" aria-labelledby="modalProjectsLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="modalProjectsLabel" class="modal-title">Projects Explained</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              The Projects section details a range of innovative technical initiatives undertaken by Krishna. My projects span full-stack web development, AI-powered chatbots, IoT solutions, and creative applications in AI fashion design.
+            </p>
+            <p>
+              Leveraging modern technologies like Flask, SQLAlchemy, Bootstrap, OpenCV, and Keras, each project is designed to address real-world challenges with scalable and efficient solutions.
+            </p>
+            <p>
+              These projects not only showcase my technical acumen but also my passion for innovation and my ability to integrate diverse technologies to create impactful outcomes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Modal -->
+    <div class="modal fade" id="modalSkills" tabindex="-1" aria-labelledby="modalSkillsLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="modalSkillsLabel" class="modal-title">Skills Explained</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              This section outlines Krishna’s extensive technical and interpersonal skills. My proficiency in programming languages such as Python, JavaScript, and SQL is complemented by my expertise in frameworks like Flask, SQLAlchemy, and Bootstrap.
+            </p>
+            <p>
+              In addition to my software development skills, I excel in AI &amp; NLP using the Google Gemini API, and my practical experience with IoT devices is evident in projects involving ESP8266 and Arduino.
+            </p>
+            <p>
+              Combined with my abilities in data visualization and web scraping, these skills position me as a versatile professional capable of addressing complex technological challenges.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience Modal -->
+    <div class="modal fade" id="modalExperience" tabindex="-1" aria-labelledby="modalExperienceLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="modalExperienceLabel" class="modal-title">Experience Explained</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              The Experience section highlights Krishna’s leadership and active involvement in competitive events. As an organizer of hackathons and workshops, he has honed skills in project management, communication, and team collaboration.
+            </p>
+            <p>
+              My participation in events like the Smart India Hackathon and roles as an Editorial Board Member have provided me with diverse perspectives on solving complex technical challenges.
+            </p>
+            <p>
+              These experiences underscore my capacity to lead, innovate, and inspire others in dynamic, fast-paced environments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Smooth scrolling for sidebar/offcanvas navigation
+      function scrollToSection(id) {
+        const element = document.getElementById(id);
+        if (element) {
+          window.scrollTo({
+            top: element.offsetTop - 20,
+            behavior: "smooth"
+          });
+        }
+      }
+    </script>
+  </body>
+</html>
